@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator, Image } from "react-native";
 
 export default function ProjectsScreen({ navigation }) {
   const [projects, setProjects] = useState([]);
@@ -29,6 +29,9 @@ export default function ProjectsScreen({ navigation }) {
       contentContainerStyle={{ padding: 16 }}
       renderItem={({ item }) => (
         <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("ProjectDetail", { project: item })}>
+          {item.image ? (
+            <Image source={{ uri: item.image }} style={styles.image} resizeMode="cover" />
+          ) : null}
           <Text style={styles.cardTitle}>{item.title}</Text>
           <Text style={styles.cardSub}>{item.category} · {item.duration}</Text>
           <Text style={styles.cardClient}>{item.client}</Text>
@@ -50,7 +53,12 @@ const styles = StyleSheet.create({
     padding: 14, 
     marginBottom: 10 
   },
-
+  image: {
+    width: "100%",
+    height: 180,
+    borderRadius: 8,
+    marginBottom: 10,
+  },
   cardTitle: { 
     fontSize: 15, 
     fontWeight: "700", 

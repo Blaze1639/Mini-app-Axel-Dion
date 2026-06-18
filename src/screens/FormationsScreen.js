@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, ActivityIndicator } from "react-native";
+import { View, Text, FlatList, StyleSheet, ActivityIndicator, Image } from "react-native";
 
 export default function FormationsScreen() {
   const [courses, setCourses] = useState([]);
@@ -33,6 +33,9 @@ export default function FormationsScreen() {
             <Text style={styles.category}>{item.category}</Text>
             <Text style={styles.level}>{item.level}</Text>
           </View>
+          {item.image ? (
+            <Image source={{ uri: item.image }} style={styles.image} resizeMode="cover" />
+          ) : null}
           <Text style={styles.cardTitle}>{item.title}</Text>
           <Text style={styles.instructor}> {item.instructor} ·  {item.duration}</Text>
           <Text style={styles.price}>{item.price} €  {item.rating} ({item.students} élèves)</Text>
@@ -78,6 +81,12 @@ const styles = StyleSheet.create({
     borderRadius: 10, 
     fontSize: 11, 
     fontWeight: "700" 
+  },
+  image: {
+    width: "100%",
+    height: 180,
+    borderRadius: 8,
+    marginBottom: 10,
   },
   cardTitle: { 
     fontSize: 15, 

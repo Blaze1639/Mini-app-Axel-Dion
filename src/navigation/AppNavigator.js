@@ -27,10 +27,23 @@ function ProjectsStack() {
 
 function AppTabs() {
   return (
-    <Tab.Navigator screenOptions={{ tabBarActiveTintColor: "#6366f1" }}>
-      <Tab.Screen name="Accueil" component={HomeScreen} options={{ tabBarLabel: " Accueil" }} />
-      <Tab.Screen name="Projets" component={ProjectsStack} options={{ tabBarLabel: " Projets", headerShown: false }} />
-      <Tab.Screen name="Formations" component={FormationsScreen} options={{ tabBarLabel: " Formations" }} />
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: "#6366f1",
+        tabBarInactiveTintColor: "#6b7280",
+        tabBarShowIcon: false,
+        tabBarShowLabel: true,
+        tabBarIndicatorStyle: { display: "none" },
+        tabBarStyle: {
+          borderTopWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
+        },
+      }}
+    >
+      <Tab.Screen name="Accueil" component={HomeScreen} options={{ tabBarLabel: "🏠 Accueil" }} />
+      <Tab.Screen name="Projets" component={ProjectsStack} options={{ tabBarLabel: "📁 Projets", headerShown: false }} />
+      <Tab.Screen name="Formations" component={FormationsScreen} options={{ tabBarLabel: "🎓 Formations" }} />
     </Tab.Navigator>
   );
 }
